@@ -6,6 +6,9 @@
 
 #include <PetaPetaPenguin/ECS/Components/PenguinAnimatorComponent.hpp>
 #include <PetaPetaPenguin/ECS/Systems/PenguinAnimationSystem.hpp>
+#include <PetaPetaPenguin/ECS/Components/ClickCounterComponent.hpp>
+#include <PetaPetaPenguin/ECS/Systems/ClickCounterSystem.hpp>
+#include <PetaPetaPenguin/Data/ClickCounterSaveData.hpp>
 
 #include <Tsukino/EngineIntegration/EngineAPI.hpp>
 #include <Tsukino/EngineIntegration/EngineContext.hpp>
@@ -69,6 +72,7 @@ namespace PetaPetaPenguin {
         enum class SystemPriority : int {
             Transform        = 0,
             Interaction      = 2,
+            ClickCounter     = 3,
             Camera           = 5,
             Font             = 9,
             Sprite           = 10,
@@ -79,6 +83,8 @@ namespace PetaPetaPenguin {
         m_scene.AddSystem(std::make_shared<Tsukino::BuiltIn::ECS::TransformSystem>(), static_cast<int>(SystemPriority::Transform));
         // InteractionはTransformの後に計算する
         m_scene.AddSystem(std::make_shared<Tsukino::BuiltIn::ECS::InteractionSystem>(), static_cast<int>(SystemPriority::Interaction));
+        // クリックカウンターはInteractionが状態を確定させた後に処理する
+        m_scene.AddSystem(std::make_shared<PetaPetaPenguin::ECS::ClickCounterSystem>(), static_cast<int>(SystemPriority::ClickCounter));
         // カメラは描画前に更新する
         m_scene.AddSystem(std::make_shared<Tsukino::BuiltIn::ECS::CameraSystem>(), static_cast<int>(SystemPriority::Camera));
         // フォント描画
@@ -202,6 +208,67 @@ namespace PetaPetaPenguin {
 
             animator.rightHandEntity = entity;    // 右手エンティティをアニメーターに登録
             registry.AddComponent<Tsukino::BuiltIn::ECS::DraggableComponent>(entity);
+        }
+
+        //--------------------------------------------------------------
+        // クリックカウンター（灰色スプライト＋カウント数テキスト）生成
+        //--------------------------------------------------------------
+        {
+            // 保存されたクリック数を復元
+            PetaPetaPenguin::Data::ClickCounterSaveData saved = PetaPetaPenguin::Data::ClickCounterSaveData::Load();
+
+            // ペンギン本体（centerEntity）からの相対位置（ペンギンのすぐ下）
+            const hlslpp::float3 anchorOffset = {0.0f, 80.0f, 0.0f};
+            const Tsukino::BuiltIn::ECS::TransformComponent& centerTransform =
+                registry.GetComponent<Tsukino::BuiltIn::ECS::TransformComponent>(animator.centerEntity);
+            const hlslpp::float3 counterPosition = centerTransform.position + anchorOffset;
+
+            Tsukino::Asset::AssetHandle counterBgTex = assetMgr->Load(Tsukino::Core::Path("PetaPetaPenguin/Assets/UI/click_counter_bg.png"));
+
+            // 灰色スプライトエンティティ
+            Tsukino::ECS::Entity counterEntity = m_scene.CreateEntity();
+            {
+                Tsukino::BuiltIn::ECS::TransformComponent& transform = registry.AddComponent<Tsukino::BuiltIn::ECS::TransformComponent>(counterEntity);
+                transform.position                                   = counterPosition;
+                transform.rotation                                   = hlslpp::quaternion(0.0f, 0.0f, 0.0f, 1.0f);
+                transform.scale                                      = hlslpp::float3(1.0f, 1.0f, 1.0f);
+                transform.dirty                                      = true;
+                transform.parent                                     = entt::null;
+
+                Tsukino::BuiltIn::ECS::SpriteComponent& sprite = registry.AddComponent<Tsukino::BuiltIn::ECS::SpriteComponent>(counterEntity);
+                sprite.textureHandle                           = counterBgTex;
+                sprite.tintColor                               = hlslpp::float4(1.0f, 1.0f, 1.0f, 1.0f);
+                sprite.uvRect                                  = hlslpp::float4(0.0f, 0.0f, 1.0f, 1.0f);
+                sprite.sortOrder                               = 0;
+
+                // クリック判定（当たり判定）を受けるためにDraggableComponentが必要
+                registry.AddComponent<Tsukino::BuiltIn::ECS::DraggableComponent>(counterEntity);
+            }
+
+            // カウント数テキストエンティティ
+            Tsukino::ECS::Entity counterTextEntity = m_scene.CreateEntity();
+            {
+                Tsukino::BuiltIn::ECS::TransformComponent& transform = registry.AddComponent<Tsukino::BuiltIn::ECS::TransformComponent>(counterTextEntity);
+                transform.position                                   = counterPosition;
+                transform.rotation                                   = hlslpp::quaternion(0.0f, 0.0f, 0.0f, 1.0f);
+                transform.scale                                      = hlslpp::float3(1.0f, 1.0f, 1.0f);
+                transform.dirty                                      = true;
+                transform.parent                                     = entt::null;
+
+                Tsukino::BuiltIn::ECS::FontComponent& font = registry.AddComponent<Tsukino::BuiltIn::ECS::FontComponent>(counterTextEntity);
+                font.text                                  = std::to_wstring(saved.count);
+                font.color                                 = hlslpp::float4(0.15f, 0.15f, 0.15f, 1.0f);
+                font.horizontalAlign                       = Tsukino::BuiltIn::ECS::HorizontalAlign::Center;
+                font.verticalAlign                         = Tsukino::BuiltIn::ECS::VerticalAlign::Middle;
+                font.sortOrder                             = 1;    // 灰色スプライトより手前に描画
+            }
+
+            // クリックカウンターComponent（カウント状態と追従関係を保持）
+            PetaPetaPenguin::ECS::ClickCounterComponent& counter = registry.AddComponent<PetaPetaPenguin::ECS::ClickCounterComponent>(counterEntity);
+            counter.count                                        = saved.count;
+            counter.textEntity                                   = counterTextEntity;
+            counter.anchorEntity                                 = animator.centerEntity;
+            counter.anchorOffset                                 = anchorOffset;
         }
     }
 

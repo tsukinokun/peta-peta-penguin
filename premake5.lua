@@ -71,7 +71,14 @@ project "PetaPetaPenguin"
     filter "configurations:Release"
         debugdir "%{cfg.targetdir}"
         postbuildcommands {
-            "{COPYDIR} " .. GAME_ROOT .. "/PetaPetaPenguin/Assets %{cfg.targetdir}/PetaPetaPenguin/Assets"
+            "{COPYDIR} " .. GAME_ROOT .. "/PetaPetaPenguin/Assets %{cfg.targetdir}/PetaPetaPenguin/Assets",
+            -- Tsukino.Engine/Tsukino.BuiltIn 側のReleaseコピーは各プロジェクト自身のtargetdir
+            -- （External/TsukinoEngine/bin/Release）宛てになっており、実行ファイルが実際に
+            -- 参照する PetaPetaPenguin 自身のtargetdirには届かない。
+            -- GetEngineAssetRootPath()はRelease時にGetAssetRootPath()（exeの隣）と同じ場所を見るため、
+            -- ここで改めてコピーする。
+            "{COPYDIR} " .. GAME_ROOT .. "/External/TsukinoEngine/Tsukino.BuiltIn/Assets %{cfg.targetdir}/Tsukino.BuiltIn/Assets",
+            "{COPYDIR} " .. GAME_ROOT .. "/External/TsukinoEngine/Tools %{cfg.targetdir}/Tools",
         }
     filter {}
 

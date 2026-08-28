@@ -1,0 +1,23 @@
+//-------------------------------------------------------------
+//! @file   ClickCounterSystem.hpp
+//! @brief  ClickCounterSystemクラスの宣言
+//-------------------------------------------------------------
+#pragma once
+#include <Tsukino/Core/ECS/System/ISystem.hpp>
+// 名前空間 : PetaPetaPenguin::ECS
+namespace PetaPetaPenguin::ECS {
+    //-------------------------------------------------------------
+    //! @class  ClickCounterSystem
+    //! @brief  クリックカウンター（灰色スプライト）のクリック検知・
+    //!         ペンギン本体との相互追従・カウント保存を行うシステム
+    //-------------------------------------------------------------
+    class ClickCounterSystem : public Tsukino::ECS::ISystem {
+    public:
+        //-------------------------------------------------------------
+        //! @brief 更新処理
+        //! @param registry  [in] エンジンのECSレジストリのラッパー
+        //! @param deltaTime [in] デルタタイム
+        //-------------------------------------------------------------
+        void Update(Tsukino::ECS::Registry& registry, float deltaTime) override;
+    };
+}    // namespace PetaPetaPenguin::ECS
