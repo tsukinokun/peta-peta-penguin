@@ -3,8 +3,7 @@
 //! @brief  ClickCounterComponentクラスの宣言
 //-------------------------------------------------------------
 #pragma once
-#include <Tsukino/Core/ECS/Entity/Entity.hpp>
-#include <hlsl++.h>
+#include <Tsukino/Core/ECS/EntityRef/EntityRef.hpp>
 // 名前空間 : PetaPetaPenguin::ECS
 namespace PetaPetaPenguin::ECS {
     //-------------------------------------------------------------
@@ -14,13 +13,13 @@ namespace PetaPetaPenguin::ECS {
     struct ClickCounterComponent {
         int count = 0;
 
+        //-------------------------------------------------------------
         // カウント数を表示するFontComponentエンティティ
-        Tsukino::ECS::Entity textEntity;
-
-        // 追従先（ペンギン本体centerEntity）
-        Tsukino::ECS::Entity anchorEntity;
-
-        // anchorEntityからの相対位置（この位置関係を保ったまま追従し合う）
-        hlslpp::float3 anchorOffset = {0.0f, 80.0f, 0.0f};
+        //
+        // 位置の追従は持たない。ペンギン本体との相対位置は
+        // TransformComponent::parent（Prefabの "parent": "#PenguinCenter"）で
+        // 表現しており、TransformSystemがワールド行列を伝播させる
+        //-------------------------------------------------------------
+        Tsukino::ECS::EntityRef textEntity;
     };
 }    // namespace PetaPetaPenguin::ECS

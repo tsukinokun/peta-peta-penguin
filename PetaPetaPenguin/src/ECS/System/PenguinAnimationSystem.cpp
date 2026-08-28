@@ -31,9 +31,6 @@ namespace PetaPetaPenguin::ECS {
         auto view = registry.View<PenguinAnimatorComponent>();
 
         view.each([&](auto& animator) {
-            if(!animator.currentSkin)
-                return;    // スキンが設定されていなければ何もしない
-
             // まばたき処理 (時間経過)
             animator.blinkTimer += deltaTime;
             if(animator.blinkTimer >= animator.blinkInterval) {
@@ -71,11 +68,11 @@ namespace PetaPetaPenguin::ECS {
                 sprite.textureHandle = handle;
             };
 
-            updateSprite(animator.centerEntity, animator.currentSkin->centerTexs[animator.isCenterFrame2 ? 1 : 0]);
+            updateSprite(animator.centerEntity, animator.currentSkin.centerTexs[animator.isCenterFrame2 ? 1 : 0]);
 
-            updateSprite(animator.leftHandEntity, animator.currentSkin->leftTexs[animator.isLeftFrame2 ? 1 : 0]);
+            updateSprite(animator.leftHandEntity, animator.currentSkin.leftTexs[animator.isLeftFrame2 ? 1 : 0]);
 
-            updateSprite(animator.rightHandEntity, animator.currentSkin->rightTexs[animator.isRightFrame2 ? 1 : 0]);
+            updateSprite(animator.rightHandEntity, animator.currentSkin.rightTexs[animator.isRightFrame2 ? 1 : 0]);
         });
     }
 }    // namespace PetaPetaPenguin::ECS

@@ -1,0 +1,32 @@
+{
+    "Entities": [
+        {
+            "key": "Camera2D",
+            "value": "PetaPetaPenguin/Assets/Prefabs/Camera2D/Prefab.json"
+        },
+        {
+            "key": "PenguinCenter",
+            "value": "PetaPetaPenguin/Assets/Prefabs/PenguinCenter/Prefab.json"
+        },
+        {
+            "key": "PenguinLeftHand",
+            "value": "PetaPetaPenguin/Assets/Prefabs/PenguinLeftHand/Prefab.json"
+        },
+        {
+            "key": "PenguinRightHand",
+            "value": "PetaPetaPenguin/Assets/Prefabs/PenguinRightHand/Prefab.json"
+        },
+        {
+            "key": "PenguinAnimator",
+            "value": "PetaPetaPenguin/Assets/Prefabs/PenguinAnimator/Prefab.json"
+        },
+        {
+            "key": "ClickCounterBackground",
+            "value": "PetaPetaPenguin/Assets/Prefabs/ClickCounterBackground/Prefab.json"
+        },
+        {
+            "key": "ClickCounterText",
+            "value": "PetaPetaPenguin/Assets/Prefabs/ClickCounterText/Prefab.json"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "Components": [
+        {
+            "key": "TransformComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/ClickCounterBackground/Transform.json"
+        },
+        {
+            "key": "SpriteComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/ClickCounterBackground/Sprite.json"
+        },
+        {
+            "key": "ClickCounterComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/ClickCounterBackground/ClickCounterComponent.json"
+        }
+    ]
+}

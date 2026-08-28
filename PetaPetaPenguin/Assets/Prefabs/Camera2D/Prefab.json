@@ -1,0 +1,12 @@
+{
+    "Components": [
+        {
+            "key": "TransformComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/Camera2D/Transform.json"
+        },
+        {
+            "key": "CameraComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/Camera2D/Camera.json"
+        }
+    ]
+}

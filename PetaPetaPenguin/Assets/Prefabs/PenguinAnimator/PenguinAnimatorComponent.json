@@ -1,0 +1,23 @@
+{
+    "PenguinAnimatorComponent": {
+        "blinkInterval": 2.0,
+        "centerEntity": "#PenguinCenter",
+        "leftHandEntity": "#PenguinLeftHand",
+        "rightHandEntity": "#PenguinRightHand",
+        "currentSkin": {
+            "name": "Normal",
+            "centerTexs": [
+                "PetaPetaPenguin/Assets/Penguin/penguin_center_1.png",
+                "PetaPetaPenguin/Assets/Penguin/penguin_center_2.png"
+            ],
+            "leftTexs": [
+                "PetaPetaPenguin/Assets/Penguin/penguin_left_1.png",
+                "PetaPetaPenguin/Assets/Penguin/penguin_left_2.png"
+            ],
+            "rightTexs": [
+                "PetaPetaPenguin/Assets/Penguin/penguin_right_1.png",
+                "PetaPetaPenguin/Assets/Penguin/penguin_right_2.png"
+            ]
+        }
+    }
+}

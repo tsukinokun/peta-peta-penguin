@@ -5,7 +5,7 @@
 #pragma once
 #include <array>
 #include <string>
-#include <Tsukino/Engine/Asset/AssetHandle.hpp>
+#include <Tsukino/Engine/Asset/AssetRef.hpp>
 // 名前空間 : PetaPetaPenguin::Data
 namespace PetaPetaPenguin::Data{
     struct PenguinSkinDefinition {
@@ -13,8 +13,8 @@ namespace PetaPetaPenguin::Data{
         std::string name;
 
         // 各部位のテクスチャセット
-        std::array<Tsukino::Asset::AssetHandle, 2> centerTexs;
-        std::array<Tsukino::Asset::AssetHandle, 2> leftTexs;
-        std::array<Tsukino::Asset::AssetHandle, 2> rightTexs;
+        std::array<Tsukino::Asset::AssetRef, 2> centerTexs;
+        std::array<Tsukino::Asset::AssetRef, 2> leftTexs;
+        std::array<Tsukino::Asset::AssetRef, 2> rightTexs;
     };
 }    // namespace PetaPetaPenguin::Data

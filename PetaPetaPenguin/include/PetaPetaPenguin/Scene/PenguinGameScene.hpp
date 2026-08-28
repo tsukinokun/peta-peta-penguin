@@ -3,8 +3,6 @@
 //! @brief   ペンギンゲームのシーンの宣言
 //-------------------------------------------------------------
 #pragma once
-#include <PetaPetaPenguin/Data/PenguinSkinDefinition.hpp>
-
 #include <Tsukino/EngineIntegration/Scene/GameSceneBase.hpp>
 // 名前空間 : PetaPetaPenguin
 namespace PetaPetaPenguin {
@@ -42,8 +40,5 @@ namespace PetaPetaPenguin {
         //! @param  api [in] エンジンから提供されるAPIへの参照
         //-------------------------------------------------------------
         void OnInitialize(Tsukino::EngineIntegration::EngineAPI& api) override;
-
-        // 現在使用中のペンギンスキンの定義
-        PetaPetaPenguin::Data::PenguinSkinDefinition m_Skin;
     };
 }    // namespace PetaPetaPenguin

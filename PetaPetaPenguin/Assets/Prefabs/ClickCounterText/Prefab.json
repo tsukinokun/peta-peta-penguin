@@ -1,0 +1,12 @@
+{
+    "Components": [
+        {
+            "key": "TransformComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/ClickCounterText/Transform.json"
+        },
+        {
+            "key": "FontComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/ClickCounterText/Font.json"
+        }
+    ]
+}

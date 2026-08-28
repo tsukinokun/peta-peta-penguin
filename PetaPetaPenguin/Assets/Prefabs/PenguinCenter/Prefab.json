@@ -1,0 +1,16 @@
+{
+    "Components": [
+        {
+            "key": "TransformComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/PenguinCenter/Transform.json"
+        },
+        {
+            "key": "SpriteComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/PenguinCenter/Sprite.json"
+        },
+        {
+            "key": "DraggableComponent",
+            "value": "null"
+        }
+    ]
+}

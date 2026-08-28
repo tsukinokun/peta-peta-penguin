@@ -1,0 +1,12 @@
+{
+    "Components": [
+        {
+            "key": "TransformComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/PenguinLeftHand/Transform.json"
+        },
+        {
+            "key": "SpriteComponent",
+            "value": "PetaPetaPenguin/Assets/Prefabs/PenguinLeftHand/Sprite.json"
+        }
+    ]
+}

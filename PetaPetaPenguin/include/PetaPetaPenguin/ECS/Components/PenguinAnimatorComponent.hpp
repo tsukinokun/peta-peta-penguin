@@ -3,7 +3,7 @@
 //! @brief  PenguinAnimatorComponentクラスの宣言
 //-------------------------------------------------------------
 #pragma once
-#include <Tsukino/Core/ECS/Entity/Entity.hpp>
+#include <Tsukino/Core/ECS/EntityRef/EntityRef.hpp>
 
 #include <PetaPetaPenguin/Data/PenguinSkinDefinition.hpp>
 // 名前空間 : PetaPetaPenguin::ECS
@@ -13,13 +13,13 @@ namespace PetaPetaPenguin::ECS {
     //! @brief  ペンギンのアニメーションに必要なComponent
     //-------------------------------------------------------------
     struct PenguinAnimatorComponent {
-        Tsukino::ECS::Entity centerEntity;
-        Tsukino::ECS::Entity leftHandEntity;
-        Tsukino::ECS::Entity rightHandEntity;
+        Tsukino::ECS::EntityRef centerEntity;
+        Tsukino::ECS::EntityRef leftHandEntity;
+        Tsukino::ECS::EntityRef rightHandEntity;
 
-        // 現在適用されているスキン定義へのポインタ/ハンドル
+        // 現在適用されているスキン定義
         // これを差し替えるだけで、全てのパーツが一瞬で切り替わる
-        const PetaPetaPenguin::Data::PenguinSkinDefinition* currentSkin = nullptr;
+        PetaPetaPenguin::Data::PenguinSkinDefinition currentSkin;
 
         // --- アニメーション状態 ---
         float blinkTimer    = 0.0f;
