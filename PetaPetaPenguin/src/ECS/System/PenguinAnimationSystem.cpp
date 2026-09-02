@@ -1,6 +1,7 @@
 //-------------------------------------------------------------
 //! @file   PenguinAnimationSystem.cpp
 //! @brief  PenguinAnimationSystemクラスの実装
+//! @author 山﨑愛
 //-------------------------------------------------------------
 #include <Tsukino/BuiltIn/ECS/Component/SpriteComponent.hpp>
 

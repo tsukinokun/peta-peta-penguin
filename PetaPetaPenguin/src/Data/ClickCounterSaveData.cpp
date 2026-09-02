@@ -1,6 +1,7 @@
 //-------------------------------------------------------------
 //! @file   ClickCounterSaveData.cpp
 //! @brief  ClickCounterSaveData構造体の実装
+//! @author 山﨑愛
 //-------------------------------------------------------------
 #include <PetaPetaPenguin/Data/ClickCounterSaveData.hpp>
 

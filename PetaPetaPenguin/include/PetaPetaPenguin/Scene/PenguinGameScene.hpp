@@ -1,6 +1,7 @@
 //-------------------------------------------------------------
 //! @file    PenguinGameScene.hpp
 //! @brief   ペンギンゲームのシーンの宣言
+//! @author  山﨑愛
 //-------------------------------------------------------------
 #pragma once
 #include <Tsukino/EngineIntegration/Scene/GameSceneBase.hpp>

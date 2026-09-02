@@ -1,6 +1,7 @@
 //--------------------------------------------------------------
 //! @file	WinMain.cpp
 //! @brief	PetaPetaPenguinのエントリポイント
+//! @author	山﨑愛
 //--------------------------------------------------------------
 #include <Tsukino/EngineIntegration/EngineAPI.hpp>
 #include <Tsukino/EngineIntegration/EngineIntegration.hpp>

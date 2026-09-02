@@ -1,6 +1,7 @@
 //-------------------------------------------------------------
 //! @file   ClickCounterSystem.cpp
 //! @brief  ClickCounterSystemクラスの実装
+//! @author 山﨑愛
 //-------------------------------------------------------------
 #include <PetaPetaPenguin/ECS/Systems/ClickCounterSystem.hpp>
 #include <PetaPetaPenguin/ECS/Components/ClickCounterComponent.hpp>

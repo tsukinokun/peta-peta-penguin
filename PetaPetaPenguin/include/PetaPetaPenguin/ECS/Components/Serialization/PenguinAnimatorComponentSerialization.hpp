@@ -1,6 +1,7 @@
 //-------------------------------------------------------------
 //! @file   PenguinAnimatorComponentSerialization.hpp
 //! @brief  PenguinAnimatorComponent / PenguinSkinDefinitionのcerealシリアライズ定義
+//! @author 山﨑愛
 //-------------------------------------------------------------
 #pragma once
 #include <PetaPetaPenguin/ECS/Components/PenguinAnimatorComponent.hpp>

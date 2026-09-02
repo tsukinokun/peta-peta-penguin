@@ -1,6 +1,7 @@
 //-------------------------------------------------------------
 //! @file   ClickCounterSystem.hpp
 //! @brief  ClickCounterSystemクラスの宣言
+//! @author 山﨑愛
 //-------------------------------------------------------------
 #pragma once
 #include <Tsukino/Core/ECS/System/ISystem.hpp>

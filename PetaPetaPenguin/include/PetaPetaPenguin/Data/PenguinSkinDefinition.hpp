@@ -1,6 +1,7 @@
 //-------------------------------------------------------------
 //! @file   PenguinSkinDefinition.hpp
 //! @brief  PenguinSkinDefinitionクラスの宣言
+//! @author 山﨑愛
 //-------------------------------------------------------------
 #pragma once
 #include <array>
@@ -9,7 +10,7 @@
 // 名前空間 : PetaPetaPenguin::Data
 namespace PetaPetaPenguin::Data{
     struct PenguinSkinDefinition {
-        // スキン名（"Normal", "Santa", "Summer" など）
+        // スキン名
         std::string name;
 
         // 各部位のテクスチャセット

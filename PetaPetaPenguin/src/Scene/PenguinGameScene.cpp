@@ -1,6 +1,7 @@
 //-------------------------------------------------------------
 //! @file    PenguinGameScene.cpp
 //! @brief   ペンギンゲームのシーンの実装
+//! @author  山﨑愛
 //-------------------------------------------------------------
 #include <PetaPetaPenguin/Scene/PenguinGameScene.hpp>
 

@@ -1,6 +1,7 @@
 //-------------------------------------------------------------
 //! @file   PenguinAnimatorComponent.hpp
 //! @brief  PenguinAnimatorComponentクラスの宣言
+//! @author 山﨑愛
 //-------------------------------------------------------------
 #pragma once
 #include <Tsukino/Core/ECS/EntityRef/EntityRef.hpp>

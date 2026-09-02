@@ -26,6 +26,22 @@ PetaPetaPenguin/
 External/TsukinoEngine/          submodule
 ```
 
+## ファイルヘッダ
+
+ゲーム側（`PetaPetaPenguin/` 配下）のヘッダ・ソースファイルは、ファイル先頭のコメントブロックに
+`@author 山﨑愛` を書く。コメント自体の書式（罫線・`//!`）は `tsukino-doc-comment` スキルの
+ファイルコメント規約に従い、タグの順序は `@file` → `@brief` → `@author` →（`@detail`/`@note` があれば最後）とする。
+
+```cpp
+//-------------------------------------------------------------
+//! @file   ClickCounterComponent.hpp
+//! @brief  ClickCounterComponentクラスの宣言
+//! @author 山﨑愛
+//-------------------------------------------------------------
+```
+
+この規約はゲーム側限定であり、`External/TsukinoEngine/`（submodule）のファイルには適用しない。
+
 ## 機能を追加する手順
 
 **この6ステップが全体。これ以外を探索する必要はない。**
