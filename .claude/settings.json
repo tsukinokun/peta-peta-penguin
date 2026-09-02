@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "deny": [
+      "Read(./External/TsukinoEngine/External/**)",
+      "Read(./External/TsukinoEngine/vendor/**)",
+      "Read(./External/TsukinoEngine/Tools/*.exe)",
+      "Read(./.build/**)",
+      "Read(./bin/**)",
+      "Read(./bin-int/**)"
+    ]
+  }
+}
